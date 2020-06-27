@@ -8,21 +8,21 @@ module.exports = function (RED) {
 
     const html = String.raw`
     <svg 
-      viewBox="0 0 270 40" 
+      viewBox="0 0 320 40" 
       id="device-status-{{$id}}" 
       ng-init='init(${configAsJson})'>
       <circle 
         id="{{'device-status-icon-'+$id}}" 
         x="0" 
         y="0" 
-        cx="265" 
+        cx="0" 
         cy="20" 
         r="15" 
         fill="{{getStatusColor()}}" >
       </circle>
       <text
         id="device-name-{{$id}}" 
-        x="0"
+        x="35"
         y="25" 
         style="{{'font-weight:700'}}" 
       >
@@ -30,7 +30,7 @@ module.exports = function (RED) {
       </text>
       <image
         id="device-icon-{{$id}}" 
-        x="200"
+        x="230"
         y="2"
         width="35px" 
         height="35px"
@@ -39,7 +39,7 @@ module.exports = function (RED) {
       </image>
       <image
         id="device-selector-{{$id}}" 
-        x="300"
+        x="270"
         y="2"
         width="50px" 
         height="35px"
@@ -152,6 +152,7 @@ module.exports = function (RED) {
             }
             $scope.device = msg.payload;
             $scope.deviceName = msg.payload.name;
+
             if (msg.devicesSelection) {
               const index = msg.devicesSelection.findIndex(compareNames);
               $scope.isSelected = index > -1;
