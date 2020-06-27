@@ -1,0 +1,89 @@
+<script type="text/javascript">
+  RED.nodes.registerType('ui_device-status', {
+    category: 'dashboard',
+    color: '#77d1bf',
+    defaults: {
+      group: { type: 'ui_group', required: true },
+      order: { value: 0 },
+      width: {
+        value: 0,
+        validate: function (v) {
+          let valid = true;
+          const width = v || 0;
+          const currentGroup = $('#node-input-group').val() || this.group;
+          const groupNode = RED.nodes.node(currentGroup);
+          valid = !groupNode || +width <= +groupNode.width;
+          $('#node-input-size').toggleClass('input-error', !valid);
+          return valid;
+        },
+      },
+      height: { value: 0 },
+      name: { value: '' },
+      deviceName: { value: '' },
+      offLineColor: { value: '#ff4500' },
+      onLineColor: { value: '#baff00' },
+      offLineText: { value: 'Waiting' },
+      onLineText: { value: 'Ready' },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'aloes-icon-min.svg',
+    paletteLabel: 'device status',
+    label: function () {
+      return this.name || 'device status';
+    },
+    oneditprepare: function () {
+      $('#node-input-size').elementSizer({
+        width: '#node-input-width',
+        height: '#node-input-height',
+        group: '#node-input-group',
+      });
+    },
+  });
+</script>
+
+<script type="text/html" data-template-name="ui_device-status">
+
+  <div class="form-row" id="template-row-group">
+    <label for="node-input-group"><i class="fa fa-table"></i> Group</span></label>
+    <input type="text" id="node-input-group">
+  </div>
+
+  <div class="form-row" id="template-row-size">
+    <label><i class="fa fa-object-group"></i> Size</span></label>
+    <input type="hidden" id="node-input-width">
+    <input type="hidden" id="node-input-height">
+    <button class="editor-button" id="node-input-size"></button>
+  </div>
+
+  <br>
+
+  <div class="form-row">
+    <label for="node-input-offLineColor"><i class="fa fa-paint-brush"></i>
+      <span data-i18n="aloes.label.off-line-color"></span>
+    </label>
+    <input type="color" id="node-input-offLineColor"/>
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-onLineColor"><i class="fa fa-paint-brush"></i>
+      <span data-i18n="aloes.label.on-line-color"></span>
+    </label>
+    <input type="color" id="node-input-onLineColor"/>
+  </div>
+
+  <div class="form-row">
+    <label for="node-input-deviceName"><i class="fa fa-i-cursor"></i>
+      <span data-i18n="aloes.label.device-name"></span>
+    </label>
+    <input type="text" id="node-input-deviceName"/>
+  </div>
+  <br>
+
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i>
+      <span data-i18n="aloes.label.name"></span>
+    </label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+</script>

@@ -1,0 +1,16 @@
+{
+  "aloes": {
+    "label": {
+      "name": "Name",
+      "device-name": "Device name",
+      "off-line-color": "OffLine Color",
+      "on-line-color": "OnLine Color",
+      "off-line-text": "OffLine Text",
+      "on-line-text": "OnLine Text"
+    },
+    "errors": {
+      "missing-input": "Missing input",
+      "invalid-topic": "Invalid topic"
+    }
+  }
+}
