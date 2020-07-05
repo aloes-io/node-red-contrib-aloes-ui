@@ -1,0 +1,67 @@
+svg.sensor-timer {
+  text-align: center;
+}
+
+svg.sensor-timer > g.timer-modes > text {
+  background: transparent;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+svg.sensor-timer > g.setters > g > text[data-setter] {
+  background: transparent;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+svg.sensor-timer > g.setters > g > text[data-setter]:hover {
+  /* text-shadow: ${conf.width / 300}px ${conf.width / 300}px ${
+  conf.width / 400
+}px #6e6e6e; */
+  opacity: 0.5;
+}
+
+svg.sensor-timer > g.controls > text.display-remain-time {
+  font-weight: 100;
+  cursor: pointer;
+}
+
+svg.sensor-timer > g.controls > g > text.play {
+  cursor: pointer;
+}
+
+svg.sensor-timer > g.controls > g > text.play:hover {
+  /* text-shadow: ${conf.width / 250}px ${conf.width / 250}px ${
+  conf.width / 400
+}px #6e6e6e; */
+  opacity: 0.8;
+}
+
+svg.sensor-timer > g.controls > g > text.stop {
+  cursor: pointer;
+}
+
+svg.sensor-timer > g.controls > g > text.stop:hover {
+  opacity: 0.8;
+  /* text-shadow: ${conf.width / 250}px ${conf.width / 250}px ${
+  conf.width / 400
+}px #6e6e6e; */
+}
+
+svg.sensor-timer > g.cron-group > circle.cron-base {
+  fill: none;
+  stroke: #b6b6b6;
+}
+
+svg.sensor-timer > g.cron-group > g > circle.cron-progress {
+  fill: none;
+  transition: stroke-dashoffset 0.7s;
+}
+
+svg.sensor-timer > g.cron-group > g > g.cron-pointer {
+  transition: transform 0.7s;
+}
+
+svg.sensor-timer > g.cron-group > g > g.cron-pointer > circle.cron-dot {
+  fill: #fff;
+}

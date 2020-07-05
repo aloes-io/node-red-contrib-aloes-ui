@@ -1,0 +1,29 @@
+<script type="text/html" data-help-name="cron">
+  <p>A Node-RED dashboard ui node to display cron associated with sensor type 3340</p>
+  <p>It can also be used to trigger scheduler events</p>
+  <br>
+
+  <h3>Inputs</h3>
+  <dl class="message-properties">
+    <dt>payload <span class="property-type">object</span></dt>
+    <dd>Sensor instance (via input msg)</dd>
+  </dl>
+
+
+  <h3>Outputs</h3>
+  <dl class="message-properties">
+    <dt>payload <span class="property-type">string | number</span></dt>
+    <dd>Sensor value</dd>
+
+    <dt>resource <span class="property-type">number</span></dt>
+    <dd>Sensor resource to update ( OMA Resource Id ) </dd>
+
+    <dt>topic <span class="property-type">string</span></dt>
+    <dd>Internal topic</dd>
+  </dl>
+
+  <h3>References</h3>
+  <ul>
+      <li><a>GitHub</a> - the nodes github repository</li>
+  </ul>
+</script>
