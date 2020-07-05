@@ -1,5 +1,5 @@
 module.exports = function (RED) {
-  const settings = RED.settings;
+  const { settings } = RED;
 
   function HTML(config) {
     config.adminRoot = settings.httpAdminRoot;
@@ -12,13 +12,13 @@ module.exports = function (RED) {
       id="device-status-{{$id}}" 
       ng-init='init(${configAsJson})'>
       <circle 
-        id="{{'device-status-icon-'+$id}}" 
+        id="device-status-icon-{{$id}}" 
         x="0" 
         y="0" 
         cx="0" 
         cy="20" 
         r="15" 
-        fill="{{getStatusColor()}}" >
+        ng-attr-fill="{{getStatusColor()}}" >
       </circle>
       <text
         id="device-name-{{$id}}" 
@@ -35,7 +35,9 @@ module.exports = function (RED) {
         width="35px" 
         height="35px"
         preserveAspectRatio="xMidYMin slice"
-        xlink:href="{{getDeviceIcon()}}">
+        xlink:href=""
+        ng-href="{{getDeviceIcon()}}"
+      >
       </image>
       <image
         id="device-selector-{{$id}}" 
@@ -46,7 +48,9 @@ module.exports = function (RED) {
         preserveAspectRatio="xMidYMin slice"
         ng-click="selectDevice()"
         style="{{'cursor:pointer'}}" 
-        xlink:href="{{getSelectorIcon()}}">
+        xlink:href=""
+        ng-href="{{getSelectorIcon()}}"
+        >
       </image>
     </svg>`;
     return html;
@@ -101,6 +105,7 @@ module.exports = function (RED) {
         },
         initController: function ($scope, events) {
           $scope.flag = true;
+          $scope.isMounted = false;
 
           $scope.init = function (config) {
             $scope.config = config;
@@ -112,6 +117,7 @@ module.exports = function (RED) {
             $scope.offLineText = config.offLineText;
             $scope.onLineText = config.onLineText;
             $scope.isSelected = false;
+            $scope.isMounted = true;
           };
 
           $scope.getDeviceIcon = () => {
